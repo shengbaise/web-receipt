@@ -1,19 +1,24 @@
 <template>
-  <list></list>
+  <l-search-bar placeholder="今天吃什么呢？"
+                bg-color="#f6f6f6"
+                shape="circle"/>
 </template>
 
 <script>
   import { createPage } from '@mpxjs/core'
 
   createPage({
-    onLoad () {}
+    onLoad () {
+    }
   })
 </script>
 
 <script type="application/json">
   {
     "usingComponents": {
-      "list": "../components/list"
+      "list": "../components/list",
+      "l-icon": "@lin-ui/icon/index",
+      "l-search-bar": "@lin-ui/search-bar/index"
     }
   }
 </script>

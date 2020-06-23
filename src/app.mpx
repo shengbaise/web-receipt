@@ -1,7 +1,9 @@
 <script>
   import mpx, { createApp } from '@mpxjs/core'
   import apiProxy from '@mpxjs/api-proxy'
-
+  import api from './api'
+  mpx.use(api)
+  // const res = await mpx.$api.order.calculatePrice(items, (state.giftNumber || 1))
   mpx.use(apiProxy, { usePromise: true })
   // app.js
   createApp({
@@ -14,21 +16,47 @@
 
 </style>
 
-<script type="application/json">
+<script type='application/json'>
   {
-    "pages": [
-      "./pages/index"
+    'pages': [
+      './pages/index'
     ]
   }
 </script>
 
 <!--也可以通过以下形式用js输出json，便于书写注释和使用条件编译-->
 
-<!--<script name="json">-->
-<!--  // 可以写注释，通过defs注入的常量做一些判断之类的操作-->
-<!--  module.exports = {-->
-<!--    pages: [-->
-<!--      './pages/index'-->
-<!--    ]-->
-<!--  }-->
-<!--</script>-->
+<script name='json'>
+// 可以写注释，通过defs注入的常量做一些判断之类的操作-->
+module.exports = {
+  'pages': [
+    './pages/index'
+  ],
+  'window': {
+    'backgroundTextStyle': 'light',
+    'navigationBarBackgroundColor': '#FFF',
+    'navigationBarTitleText': '大家的菜谱',
+    'navigationBarTextStyle': 'black'
+  },
+  'tabBar': {
+    'fontSize': '12px',
+    'color': '#666',
+    'backgroundColor': '#263238',
+    'selectedColor': '#398dee',
+    'list': [
+      {
+        'pagePath': 'pages/index',
+        'text': '推荐'
+      },
+      {
+        'pagePath': 'pages/index',
+        'text': '分类'
+      },
+      {
+        'pagePath': 'pages/index',
+        'text': '我的'
+      }
+    ]
+  }
+}
+</script>

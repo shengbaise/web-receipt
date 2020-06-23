@@ -54,7 +54,10 @@ const webpackConf = {
   mode: 'none',
   resolve: {
     extensions: ['.mpx', '.js', '.wxml'],
-    modules: ['node_modules']
+    modules: ['node_modules'],
+    alias: {
+      '@lin-ui': resolve('node_modules/lin-ui/dist')
+    }
   }
 }
 
