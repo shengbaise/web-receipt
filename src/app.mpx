@@ -3,7 +3,6 @@
   import apiProxy from '@mpxjs/api-proxy'
   import api from './api'
   mpx.use(api)
-  // const res = await mpx.$api.order.calculatePrice(items, (state.giftNumber || 1))
   mpx.use(apiProxy, { usePromise: true })
   // app.js
   createApp({
@@ -12,8 +11,11 @@
   })
 </script>
 
-<style>
-
+<style lang="stylus">
+.long-text
+  overflow hidden
+  text-overflow ellipsis
+  white-space nowrap
 </style>
 
 <script type='application/json'>

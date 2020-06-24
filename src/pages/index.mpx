@@ -2,13 +2,25 @@
   <l-search-bar placeholder="今天吃什么呢？"
                 bg-color="#f6f6f6"
                 shape="circle"/>
+  <view class="slogan-text">美味调剂生活</view>
+  <l-water-flow generic:l-water-flow-item="l-demo"/>
+                
 </template>
 
 <script>
-  import { createPage } from '@mpxjs/core'
+  // import { createPage } from '@mpxjs/core'
+  import mpx, { createPage } from '@mpxjs/core'
 
   createPage({
-    onLoad () {
+    data: {
+      receiptList: []
+    },
+    async onLoad () {
+      const res = await mpx.$api.getReceiptList({ size: 10, fuzzy: '', current: 1 })
+      this.data.receiptList = res.data.list || []
+      wx.lin.renderWaterFlow(this.data.receiptList, false, () => {
+        console.log('渲染成功')
+      })
     }
   })
 </script>
@@ -17,8 +29,17 @@
   {
     "usingComponents": {
       "list": "../components/list",
-      "l-icon": "@lin-ui/icon/index",
-      "l-search-bar": "@lin-ui/search-bar/index"
+      "l-search-bar": "@lin-ui/search-bar/index",
+      "l-demo": "../components/receipt-model",
+      "l-water-flow": "@lin-ui/water-flow/index"
     }
   }
 </script>
+
+<style lang="stylus">
+.slogan-text
+  font-size 12px
+  color #C2C2C2
+  text-align center
+  padding 12px
+</style>

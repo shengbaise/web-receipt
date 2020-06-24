@@ -5,10 +5,14 @@
  * @LastEditors: 义妁
  * @LastEditTime: 2019-09-11 14:13:11
  */
-import request from '../../lib/request'
+import request from '../lib/request'
 import receipt from './receipt'
+const baseUrl = 'http://172.16.6.11:3001/api'
 
 function ajax (params, options = {}) {
+  Object.assign(options, {
+    url: `${baseUrl}${options.url}`
+  })
   if (params) {
     if (options.method === 'post') {
       options.data = params
